@@ -1,13 +1,35 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<view>
+  <swiper indicator-dots="true" autoplay="true" circular="true">
+    <block wx:for="{{carousels}}" wx:key="name">
+      <swiper-item>
+        <image src='{{item.picUrl}}' mode="aspectFill" style="width:100%;height:100%;" />
+      </swiper-item>
     </block>
+  </swiper>
+</view>
+<view class="category-panel1">
+  <view class="category-panel2">
+    <view bindtap='scanCode' class="category-item">
+      <image class="category-item-image" src="/images/scan_code.png" />
+      <text class="category-item-text">扫码认证</text>
+    </view>
+    <view bindtap='getCode' class="category-item">
+      <image class="category-item-image" src="/images/qrcode.png" />
+      <text class="category-item-text">生成凭证</text>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="category-panel2">
+    <view bindtap='applyVisit' class="category-item">
+      <image class="category-item-image" src="/images/apply.png" />
+      <text class="category-item-text">申请访问</text>
+    </view>
+    <view bindtap="showFriends" class="category-item">
+      <image class="category-item-image" src="/images/friends.png" />
+      <text class="category-item-text">好友列表</text>
+    </view>
   </view>
+  <mp-dialog show="{{codeDialogShow}}" title="二维码凭证" buttons="{{codeDialogButtons}}" bindbuttontap="clickDialogBtn">
+    <image src="/images/test_qrcode.png" mode="aspectFill" style="width:250px;height:250px;"/>
+  </mp-dialog>
 </view>

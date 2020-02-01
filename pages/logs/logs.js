@@ -1,5 +1,6 @@
 //logs.js
 const util = require('../../utils/util.js')
+const app = getApp()
 
 Page({
   data: {
@@ -11,5 +12,12 @@ Page({
         return util.formatTime(new Date(log))
       })
     })
+  },
+  scanCode: function () {
+    console.log("测试")
+    
+  },
+  getUserInfo: function (e) {
+    console.log(e)
   }
 })
