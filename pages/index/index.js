@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    codeDialogShow: true,
+    codeDialogShow: false,
     codeDialogButtons: [{ text: '确定' }],
     carousels: [
       {

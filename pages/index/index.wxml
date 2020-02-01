@@ -30,6 +30,6 @@
     </view>
   </view>
   <mp-dialog show="{{codeDialogShow}}" title="二维码凭证" buttons="{{codeDialogButtons}}" bindbuttontap="clickDialogBtn">
-    <image src="/images/test_qrcode.png" mode="aspectFill" style="width:250px;height:250px;"/>
+    <image src="/images/test_qrcode.png" mode="aspectFill" style="width:250px;height:250px;" />
   </mp-dialog>
 </view>
