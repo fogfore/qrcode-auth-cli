@@ -1,0 +1,24 @@
+Page {
+  background-color: #80808021
+}
+
+.component {
+  background-color: #ffffff
+}
+
+/*分割线样式*/
+
+.div-line {
+  position: fixed;
+  background: #80808021;
+  width: 100%;
+  height: 15rpx;
+}
+
+.div-line1 {
+  position: fixed;
+  background: #80808021;
+  width: 85%;
+  right: 20rpx;
+  height: 2rpx;
+}

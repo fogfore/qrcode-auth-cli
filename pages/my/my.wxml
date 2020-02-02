@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="head">
+<view class="head component">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像昵称 </button>
     <block wx:else>
@@ -9,22 +9,21 @@
     </block>
   </view>
 </view>
+<view class="div-line"></view>
 <view class="list-wrapper">
-  <view class="div-line"></view>
-  <navigator url="{{item.url}}" class="list-item" hover-class="list-item_active">
+  <navigator url="{{item.url}}" class="list-item component" hover-class="list-item_active">
     <view class='item'>
       <image class='item-image' src='/images/setting.png'></image>
       <text class="item-text">设置</text>
       <text class='item-array'>></text>
     </view>
-    <view class="div-line1"></view>
   </navigator>
-    <navigator url="{{item.url}}" class="list-item" hover-class="list-item_active">
+  <view class="div-line1"></view>
+  <navigator url="{{item.url}}" class="list-item component" hover-class="list-item_active">
     <view class='item'>
       <image class='item-image' src='/images/abort.png'></image>
       <text class="item-text">关于</text>
       <text class='item-array'>></text>
     </view>
-    <view class="div-line1"></view>
   </navigator>
 </view>
