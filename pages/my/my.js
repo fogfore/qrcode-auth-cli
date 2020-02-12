@@ -1,30 +1,27 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const baseUrl = app.globalData.baseUrl
 
 Page({
   data: {
-    userInfo: {},
-    hasUserInfo: false,
+    userInfo: {}
   },
   onLoad: function() {
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // }
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
   },
-  login: function () {
-    console.log('login')
+  showUserinfo: function () {
+    console.log('显示用户信息')
     wx.navigateTo({
-      url: '/pages/login/login',
+      url: '/pages/userinfo/userinfo',
     })
-  },
-  showUserInfo: function () {
-    console.log('用户信息')
-  },
-  clickRegister: function () {
-    console.log('用户注册')
   }
 })

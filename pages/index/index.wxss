@@ -1,38 +1,8 @@
-/**index.wxss**/
-.category-panel1 {
- height: 300px;
- width: 100%;
- display: flex;
- color: #666;
- flex-direction: column;
- font-size: 11px;
- justify-content: space-around;
-}
+@import "/wxss/common.wxss";
 
-.category-panel2 {
- height: 100px;
- width: 100%;
- display: flex;
- color: #666;
- flex-direction: row;
- font-size: 11px;
- justify-content: space-around;
-}
-
-.category-item {
- display: flex;
- width: 60px;
- text-align: center;
- flex-direction: column;
-}
-
-.category-item-image {
- width: 50px;
- height: 50px;
- overflow: unset;
- padding: 15px 12px 0 6px;
-}
-
-.category-item-text {
- margin-top: 11px;
+.item-image {
+  margin-right: 16px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px
 }

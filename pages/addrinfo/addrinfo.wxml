@@ -1,0 +1,15 @@
+<mp-cells>
+	<mp-cell title="名字" footer="{{addrinfo.name}}"></mp-cell>
+	<block wx:if="{{auth==2}}">
+		<navigator url="{{addVisitorUrl}}">
+			<mp-cell title="添加用户">
+				<view slot="footer" class="item-array">></view>
+			</mp-cell>
+		</navigator>
+		<navigator url="{{showVisitorsUrl}}">
+			<mp-cell title="用户列表">
+				<view slot="footer" class="item-array">></view>
+			</mp-cell>
+		</navigator>
+	</block>
+</mp-cells>

@@ -1,0 +1,7 @@
+<!--pages/visit_deal/visit_deal.wxml-->
+<view>
+  <block>
+    昵称：<label>{{visitor.nickName}}</label>
+  </block>
+</view>
+<button bindtap="agreeVisit">确认访问</button>

@@ -1,32 +1,22 @@
 <!--index.wxml-->
-<view class="head component">
-  <view class="userinfo">
-    <block wx:if="{{!hasUserInfo}}" class="login-register">
-      <button bindtap="clickLogin" style="width:25%;left:10%">登录 </button>
-      <button bindtap="clickRegister" style="width:25%;right:10%">注册</button>
-    </block>
-    <block wx:else>
-      <image bindtap="showUserInfo" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text class='item-array'>></text>
-    </block>
-  </view>
+<view class="head component" bindtap="showUserinfo">
+	<view class="userinfo">
+		<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+		<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+	</view>
 </view>
-<view class="div-line"></view>
-<view class="list-wrapper">
-  <navigator url="{{item.url}}" class="list-item component" hover-class="list-item_active">
-    <view class='item'>
-      <image class='item-image' src='/images/setting.png'></image>
-      <text class="item-text">设置</text>
-      <text class='item-array'>></text>
-    </view>
-  </navigator>
-  <view class="div-line1"></view>
-  <navigator url="{{item.url}}" class="list-item component" hover-class="list-item_active">
-    <view class='item'>
-      <image class='item-image' src='/images/abort.png'></image>
-      <text class="item-text">关于</text>
-      <text class='item-array'>></text>
-    </view>
-  </navigator>
-</view>
+<mp-cells>
+	<navigator url="#">
+		<mp-cell title="设置">
+			<image slot="icon" src="/images/setting.png" class="item-image"></image>
+      <view slot="footer" class="item-array">></view>
+		</mp-cell>
+	</navigator>
+
+	<navigator url="#">
+		<mp-cell title="关于">
+			<image slot="icon" src="/images/abort.png" class="item-image"></image>
+      <view slot="footer" class="item-array">></view>
+		</mp-cell>
+	</navigator>
+</mp-cells>

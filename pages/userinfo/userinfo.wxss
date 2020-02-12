@@ -1,0 +1,5 @@
+@import "/wxss/common.wxss";
+
+.saveBtn{
+  margin-top: 10px;
+}
