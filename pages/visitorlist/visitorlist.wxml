@@ -1,2 +1,8 @@
 <!--pages/visitorlist/visitorlist.wxml-->
-<text>pages/visitorlist/visitorlist.wxml</text>
+<mp-cells wx:for="{{visitors}}" wx:key="{{id}}">
+  <mp-slideview buttons="{{item.slideBtns}}" bindbuttontap="slideButtonTap">
+    <mp-cell title="{{item.realName}}">
+				<image slot="icon" src="{{item.avatarUrl}}" class="item-image"></image>
+    </mp-cell>
+  </mp-slideview>
+</mp-cells>
