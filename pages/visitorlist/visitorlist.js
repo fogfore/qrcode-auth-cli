@@ -34,7 +34,6 @@ Page({
               }]
             }
           }
-          console.log(data)
           that.setData({
             visitors: data
           })
@@ -57,8 +56,13 @@ Page({
       },
       success: function (res) {
         if (res.data.status == '200') {
+          that.onLoad({
+            addrId: that.data.addrId,
+            addrName: that.data.addrName
+          })
           wx.showToast({
             title: '删除成功',
+            duration: 3000
           })
           that.onLoad({
             addrId: that.data.addrId,

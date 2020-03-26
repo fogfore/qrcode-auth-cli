@@ -5,14 +5,9 @@ const baseUrl = app.globalData.baseUrl
 
 Page({
   data: {
-    addrs: [],
-    dialogShow: false,
-    dialogBtns: [{
-      text: '确认'
-    }],
-    credentialUrl: null
+    addrs: []
   },
-  onLoad: function () {
+  onShow: function () {
     if (app.globalData.userInfo == null) {
       wx.navigateTo({
         url: '/pages/login/login',
@@ -23,12 +18,11 @@ Page({
   getAddrs: function () {
     let that = this
     wx.request({
-      url: baseUrl + '/user/list/addrs',
+      url: baseUrl + '/addr/list',
       header: {
         skey: wx.getStorageSync('skey')
       },
       success: function (res) {
-        console.log(res)
         const data = res.data.data
         let addrs = []
         for (let i = 0; i < data.length; i++) {
@@ -39,24 +33,17 @@ Page({
           }
           let slideData = {
             addrId: data[i].addrId,
-            auth: data[i].userAuth
+            auth: data[i].userAuth,
+            addrName: data[i].addrName
           }
           if (data[i].userAuth == 2) {
             addr.slideBtns = [{
-                text: '凭证',
-                data: slideData
-              },{
                 text: '扫码',
                 data: slideData
               }]
           } else if (data[i].userAuth == 1) {
             addr.slideBtns = [{
               text: '凭证',
-              data: slideData
-            }]
-          } else {
-            addr.slideBtns = [{
-              text: '申请',
               data: slideData
             }]
           }
@@ -69,31 +56,14 @@ Page({
     })
   },
   slideButtonTap(e) {
-    console.log('slide button tap', e.detail)
-    const index = e.detail.index
     const data = e.detail.data
-    let that = this
-    if (index == 0 && (data.auth == 2 || data.auth == 1)) {
-      wx.downloadFile({
-        url: baseUrl + '/qrcode/get/credential/' + data.addrId,
-        header: {
-          skey: wx.getStorageSync('skey')
-        },
-        success: function (res) {
-          console.log(res)
-          if (res.statusCode === 200) {
-            that.setData({
-              dialogShow: true,
-              credentialUrl: res.tempFilePath
-            })
-          }
-        }
+    if (data.auth == 1) {
+      wx.navigateTo({
+        url: '/pages/credential/credential?addrId=' + data.addrId + '&addrName=' + data.addrName,
       })
-    }
-    if (index == 1 && data.auth == 2) {
+    } else if (data.auth == 2) {
       wx.scanCode({
         complete: (res) => {
-          console.log(res)
           wx.request({
             url: baseUrl + '/user/auth/visit',
             method: 'POST',
@@ -116,10 +86,5 @@ Page({
         },
       })
     }
-  },
-  clickDialogBtn() {
-    this.setData({
-      dialogShow: false
-    })
   }
 })

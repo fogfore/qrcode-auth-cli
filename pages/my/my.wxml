@@ -6,6 +6,13 @@
 	</view>
 </view>
 <mp-cells>
+	<navigator url="/pages/addaddr/addaddr">
+		<mp-cell title="新增地点">
+			<image slot="icon" src="/images/add.png" class="item-image"></image>
+      <view slot="footer" class="item-array">></view>
+		</mp-cell>
+	</navigator>
+
 	<navigator url="#">
 		<mp-cell title="设置">
 			<image slot="icon" src="/images/setting.png" class="item-image"></image>

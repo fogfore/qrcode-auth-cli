@@ -1,5 +1,14 @@
 <mp-cells>
 	<mp-cell title="名字" footer="{{addrinfo.name}}"></mp-cell>
+	<mp-cell title="地址" footer="{{addrinfo.location}}"></mp-cell>
+	<mp-cell title="描述" footer="{{addrinfo.description}}"></mp-cell>
+	<block wx:if="{{auth==1}}">
+		<navigator url="{{credentialUrl}}">
+			<mp-cell title="访问凭证">
+				<view slot="footer" class="item-array">></view>
+			</mp-cell>
+		</navigator>
+	</block>
 	<block wx:if="{{auth==2}}">
 		<navigator url="{{addVisitorUrl}}">
 			<mp-cell title="添加用户">
@@ -11,5 +20,7 @@
 				<view slot="footer" class="item-array">></view>
 			</mp-cell>
 		</navigator>
+		<mp-cell title="扫码认证" bindtap="dealAuth"></mp-cell>
+		<mp-cell title="删除地址" bindtap="delAddr"></mp-cell>
 	</block>
 </mp-cells>

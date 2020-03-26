@@ -6,7 +6,9 @@
     "pages/userinfo/userinfo",
     "pages/addrinfo/addrinfo",
     "pages/addvisitor/addvisitor",
-    "pages/visitorlist/visitorlist"
+    "pages/visitorlist/visitorlist",
+    "pages/addaddr/addaddr",
+    "pages/credential/credential"
   ],
   "window": {
     "backgroundTextStyle": "light",

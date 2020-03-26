@@ -57,7 +57,6 @@ Page({
     })
   },
   addVisitor: function () {
-    console.log('添加用户')
     let that = this
     this.setData({
       loading: true

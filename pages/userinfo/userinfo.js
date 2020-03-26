@@ -16,7 +16,6 @@ Page({
         skey: wx.getStorageSync('skey')
       },
       success: function (res) {
-        console.log(res)
         if (res.data.status == '200') {
           that.setData({
             userinfo: res.data.data
@@ -26,7 +25,6 @@ Page({
     })
   },
   inputRealName: function (e) {
-    console.log(e)
     this.data.userinfo.realName = e.detail.value
     if (this.data.disabled) {
       this.setData({
@@ -35,7 +33,6 @@ Page({
     }
   },
   inputPhone: function (e) {
-    console.log(e)
     this.data.userinfo.phone = e.detail.value
     if (this.data.disabled) {
       this.setData({
@@ -44,7 +41,6 @@ Page({
     }
   },
   saveUserinfo: function () {
-    console.log('保存用户信息')
     let that = this
     this.setData({
       loading: true

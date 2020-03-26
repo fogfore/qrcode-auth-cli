@@ -7,6 +7,3 @@
 		</navigator>
 	</mp-slideview>
 </mp-cells>
-<mp-dialog title="凭证" show="{{dialogShow}}" buttons="{{dialogBtns}}" bindbuttontap="clickDialogBtn">
-	<image src="{{credentialUrl}}" style="height:100px;width:100px"></image>
-</mp-dialog>
