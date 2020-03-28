@@ -37,7 +37,8 @@ Page({
   dealAuth: function () {
     let addrinfo = this.data.addrinfo
     wx.scanCode({
-      complete: (res) => {
+      scanType: ['qrCode'],
+      success: (res) => {
         wx.navigateTo({
           url: '/pages/visitorinfo/visitorinfo?credential=' + res.result + "&addrId=" + addrinfo.id + "&addrName=" + addrinfo.name,
         })

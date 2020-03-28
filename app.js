@@ -24,7 +24,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    baseUrl: "http://localhost:8080/qrcodeauth",
-    // baseUrl: "http://39.105.7.92:8081/qrcodeauth",
+    // baseUrl: "http://localhost:8080/qrcodeauth",
+    baseUrl: "http://39.105.7.92:8081/qrcodeauth",
   }
 })

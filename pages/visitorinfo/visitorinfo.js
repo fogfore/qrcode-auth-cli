@@ -20,34 +20,30 @@ Page({
   },
   getVisitor: function (credential, addrId) {
     let that = this
-    wx.scanCode({
-      complete: (res) => {
-        wx.request({
-          url: baseUrl + '/user/get/visitorinfo',
-          method: 'POST',
-          header: {
-            skey: wx.getStorageSync('skey')
-          },
-          data: {
-            credential: credential,
-            addrId: addrId
-          },
-          success: function (res) {
-            if (res.data.status == '200') {
-              let visitor = res.data.data
-              let permitVisit = that.isPermitVisit(visitor.auth)
-              that.setData({
-                visitor: visitor,
-                permitVisit: permitVisit
-              })
-            } else {
-              wx.redirectTo({
-                url: '/pages/error/error?title=拒绝访问&desc=该用户没有访问' + that.data.addrName + '的权限',
-              })
-            }
-          }
-        })
+    wx.request({
+      url: baseUrl + '/user/get/visitorinfo',
+      method: 'POST',
+      header: {
+        skey: wx.getStorageSync('skey')
       },
+      data: {
+        credential: credential,
+        addrId: addrId
+      },
+      success: function (res) {
+        if (res.data.status == '200') {
+          let visitor = res.data.data
+          let permitVisit = that.isPermitVisit(visitor.auth)
+          that.setData({
+            visitor: visitor,
+            permitVisit: permitVisit
+          })
+        } else {
+          wx.redirectTo({
+            url: '/pages/error/error?title=拒绝访问&desc=该用户没有访问' + that.data.addrName + '的权限',
+          })
+        }
+      }
     })
   },
   isPermitVisit: function (auth) {

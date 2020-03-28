@@ -67,7 +67,8 @@ Page({
       })
     } else if (data.auth == 2) {
       wx.scanCode({
-        complete: (res) => {
+        scanType: ['qrCode'],
+        success(res) {
           wx.navigateTo({
             url: '/pages/visitorinfo/visitorinfo?credential=' + res.result + "&addrId=" + data.addrId + "&addrName=" + data.addrName,
           })
