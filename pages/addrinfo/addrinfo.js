@@ -18,43 +18,28 @@ Page({
         skey: wx.getStorageSync('skey')
       },
       success: function (res) {
-        console.log(res)
         if (res.data.status == '200') {
+          let addrinfo = res.data.data
           that.setData({
             auth: options.auth,
-            addrinfo: res.data.data,
-            addVisitorUrl: '/pages/addvisitor/addvisitor?addrId=' + options.addrId + '&addrName=' + res.data.data.name,
-            showVisitorsUrl: '/pages/visitorlist/visitorlist?addrId=' + options.addrId + '&addrName=' + res.data.data.name,
-            credentialUrl: '/pages/credential/credential?addrId=' + options.addrId + '&addrName=' + res.data.data.name
+            addrinfo: addrinfo,
+            addVisitorUrl: '/pages/addvisitor/addvisitor?addrId=' + options.addrId + '&addrName=' + addrinfo.name,
+            showVisitorsUrl: '/pages/visitorlist/visitorlist?addrId=' + options.addrId + '&addrName=' + addrinfo.name,
+            credentialUrl: '/pages/credential/credential?addrId=' + options.addrId + '&addrName=' + addrinfo.name
           })
           wx.setNavigationBarTitle({
-            title: res.data.data.name,
+            title: addrinfo.name,
           })
         }
       }
     })
   },
   dealAuth: function () {
+    let addrinfo = this.data.addrinfo
     wx.scanCode({
       complete: (res) => {
-        wx.request({
-          url: baseUrl + '/user/auth/visit',
-          method: 'POST',
-          header: {
-            skey: wx.getStorageSync('skey')
-          },
-          data: {
-            credential: res.result,
-            addrId: this.data.addrinfo.id
-          },
-          success: function (res) {
-            if (res.data.status == '200') {
-              wx.showToast({
-                title: '同意访问',
-                duration: 3000
-              })
-            }
-          }
+        wx.navigateTo({
+          url: '/pages/visitorinfo/visitorinfo?credential=' + res.result + "&addrId=" + addrinfo.id + "&addrName=" + addrinfo.name,
         })
       },
     })

@@ -60,6 +60,9 @@ Page({
             disabled: true,
             loading: false
           })
+          wx.switchTab({
+            url: '/pages/my/my',
+          })
           wx.showToast({
             title: '保存成功',
             duration: 3000

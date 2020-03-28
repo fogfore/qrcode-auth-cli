@@ -8,7 +8,10 @@
     "pages/addvisitor/addvisitor",
     "pages/visitorlist/visitorlist",
     "pages/addaddr/addaddr",
-    "pages/credential/credential"
+    "pages/credential/credential",
+    "pages/visitorinfo/visitorinfo",
+    "pages/success/success",
+    "pages/error/error"
   ],
   "window": {
     "backgroundTextStyle": "light",

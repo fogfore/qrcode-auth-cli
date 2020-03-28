@@ -15,6 +15,10 @@ Page({
     }
     this.getAddrs()
   },
+  onPullDownRefresh: function () {
+    this.onShow()
+    wx.stopPullDownRefresh()
+  },
   getAddrs: function () {
     let that = this
     wx.request({
@@ -38,9 +42,9 @@ Page({
           }
           if (data[i].userAuth == 2) {
             addr.slideBtns = [{
-                text: '扫码',
-                data: slideData
-              }]
+              text: '扫码',
+              data: slideData
+            }]
           } else if (data[i].userAuth == 1) {
             addr.slideBtns = [{
               text: '凭证',
@@ -64,24 +68,8 @@ Page({
     } else if (data.auth == 2) {
       wx.scanCode({
         complete: (res) => {
-          wx.request({
-            url: baseUrl + '/user/auth/visit',
-            method: 'POST',
-            header: {
-              skey: wx.getStorageSync('skey')
-            },
-            data: {
-              credential: res.result,
-              addrId: data.addrId
-            },
-            success: function (res) {
-              if (res.data.status == '200') {
-                wx.showToast({
-                  title: '同意访问',
-                  duration: 3000
-                })
-              }
-            }
+          wx.navigateTo({
+            url: '/pages/visitorinfo/visitorinfo?credential=' + res.result + "&addrId=" + data.addrId + "&addrName=" + data.addrName,
           })
         },
       })

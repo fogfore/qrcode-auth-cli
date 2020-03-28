@@ -42,7 +42,6 @@ Page({
     })
   },
   slideButtonTap: function (e) {
-    console.log(e)
     let that = this
     wx.request({
       url: baseUrl + '/user/del/visitor',
